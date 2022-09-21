@@ -1,0 +1,18 @@
+
+public class Robot {
+	private String id;
+	private String name;
+	private int positionX;
+	private int positionY;
+	private int orientation;
+	private static int nbRobot;
+	
+	
+	public Robot(String name, int positionX, int positionY, int orientation ) {
+		this.name = name;
+		this.positionX = positionX;
+		this.positionY = positionY;
+		this.orientation = orientation;
+		this.id = "ROB" + id;
+	}
+}

@@ -1,0 +1,31 @@
+
+public class Entier {
+	private int borneMin;
+	private int borneMax;
+	private int valeur; 
+	
+	public int getValeur() {
+		return valeur;
+	}
+	public void setValeur(int valeur) {
+		this.valeur = valeur;
+	}
+	public int getBorneMin() {
+		return borneMin;
+	}
+	public int getBorneMax() {
+		return borneMax;
+	}
+	
+	
+	public Entier(int borneMin, int borneMax) {
+			this.borneMin = borneMin;
+			this.borneMax = borneMax;
+		}
+	public Entier(int borneMin, int borneMax, int valeur) {
+		this.borneMin = borneMin;
+		this.borneMax = borneMax;
+		this.valeur = valeur;
+	}
+	
+}

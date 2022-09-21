@@ -1,0 +1,8 @@
+On souhaite maintenant pouvoir gérer des dés dont les faces ne sont pas nécessairement des chiffres
+entiers qui se suivent de façon continue de 1 à nbFaces, mais pourquoi pas des chaines de caractères,
+par exemple "Gagné", "Perdu", "Relancez", "Passez votre tour" ; ou bien des suites d’entiers pairs,
+ou impairs ou suivant une autre logique.
+Comment pourrait-on procéder ?
+
+On pourrait ajouté un attributs de type list représentant ce que chaque face doit contenir. Ainsi la fonction
+lancer utiliseras l'int générer aléatoirement pour piocher a l'index n de la liste des faces.

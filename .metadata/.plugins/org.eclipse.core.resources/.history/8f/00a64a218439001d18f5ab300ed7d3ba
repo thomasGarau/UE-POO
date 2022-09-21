@@ -1,0 +1,48 @@
+package attelier7;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class DesMemoire extends Des {
+	private int dernierLancer;
+	
+	public DesMemoire(int nb_face, String name) {
+		super(nb_face,name);
+		if(nb_face < nb_face_min){
+			this.nb_face = nb_face_min;
+		}else if(nb_face >nb_face_max){
+			this.nb_face = nb_face_max;
+		}else {
+			this.nb_face = nb_face;
+		}
+		if(name != null && name != "" ) {
+			this.name = name;
+		}else {
+			this.name = "Des" + nbrDes;
+		}
+		nbrDes ++;
+	}
+	
+	public int lancer() {
+		int a = ThreadLocalRandom.current().nextInt(1, this.nb_face +1);
+		while(a == this.dernierLancer) {
+			a = ThreadLocalRandom.current().nextInt(1, this.nb_face +1); 
+		}
+		this.dernierLancer = a;
+		return a;
+	}
+	
+	public int lancer(int nbr_lancer) {
+		int a = 0;
+		int i = 0;
+		int max = 0;
+		while(i < nbr_lancer || a == this.dernierLancer) {
+			a = ThreadLocalRandom.current().nextInt(1, this.nb_face +1); 
+			if (a > max) {
+				max = a;
+			}
+			i++;
+		}
+		this.dernierLancer = a;
+		return a;
+	}
+}

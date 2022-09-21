@@ -1,0 +1,11 @@
+import static java.lang.Math.*;
+
+public class test_api {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print(Math.PI);
+			System.out.print(Math.random());
+	}
+
+}

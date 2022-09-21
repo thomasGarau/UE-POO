@@ -1,0 +1,37 @@
+package attelier7;
+
+public class Des {
+	
+	private String name = "De";
+	private int nb_faces = 6;
+	
+	public int getNb_faces() {
+		return nb_faces;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setNb_faces(int nb_faces) {
+		this.nb_faces = nb_faces;
+	}
+	
+	
+	public Des(nb_face, name) {
+		this.nb_faces = nb_face;
+		this.name = name;
+	}
+	
+	public Des(nb_face) {
+		this.nb_faces = nb_face;
+	}
+	
+	public Des() {
+		
+	}
+	
+	
+	
+	
+}

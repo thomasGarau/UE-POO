@@ -1,0 +1,12 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		Vecteur vecteur1 = new Vecteur(3,2,5);
+		Vecteur vecteur2 = new Vecteur(1,2,3);
+		System.out.print(vecteur1);
+		System.out.print(getNorme.vecteur1);
+		System.out.print(getNorme.vecteur2);
+	}
+
+}

@@ -1,0 +1,12 @@
+package attelier7;
+
+public class DesPiper extends Des {
+	private int borne;
+	
+	public DesPiper(String name, int nb_faces, int borne) {
+		super(name, nb_faces);
+		this.name = name; 
+		this.nb_faces = nb_faces;
+		this.borne = borne;
+	}
+}

@@ -1,0 +1,28 @@
+import java.util.concurrent.ThreadLocalRandom;
+
+public class EntierBarjo extends Entier{
+	private int niveauFolie;
+	
+	public EntierBarjo(int borneMin, int borneMax, int valeur, int niveauFolie) {
+		super(borneMin, borneMax, valeur);
+		this.niveauFolie = niveauFolie;
+		this.borneMin = borneMin; 
+		this.borneMax = borneMax; 
+		this.valeur = valeur;
+	}
+	
+	public void Incremente() {
+		int a = ThreadLocalRandom.current().nextInt(0, this.niveauFolie);
+		if(this.valeur + 1 + a <= this.borneMax) {
+			this.valeur += a+1;
+		}
+	}
+	
+	public void Incremente(int valeurIncrementation) {
+		int a = ThreadLocalRandom.current().nextInt(0, this.niveauFolie);
+		if(this.valeur + valeurIncrementation + a <= this.borneMax) {
+			this.valeur += valeurIncrementation + a;
+		}
+	}
+	
+}

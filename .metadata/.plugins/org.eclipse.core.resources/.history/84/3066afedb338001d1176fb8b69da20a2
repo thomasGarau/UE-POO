@@ -1,0 +1,33 @@
+
+public class Robot {
+	private int id;
+	private String name;
+	private int positionX = 0;
+	private int positionY = 0;
+	private int orientation = 1;
+	private static int nbRobot;
+	
+	
+	public Robot(String name, int positionX, int positionY, int orientation ) {
+		this.name = name;
+		this.positionX = positionX;
+		this.positionY = positionY;
+		this.orientation = orientation;
+		this.id = "ROB" + id;
+	}
+	
+	public Robot(String name) {
+		this.name = name;
+		this.positionX = positionX;
+		this.positionY = positionY;
+		this.orientation = orientation;
+		this.id = "ROB" + id;
+		
+	}
+	
+	public void ChangeOrientation(int orientation) {
+		this.orientation = orientation;
+	}
+	
+	public void Orientation(int )
+}

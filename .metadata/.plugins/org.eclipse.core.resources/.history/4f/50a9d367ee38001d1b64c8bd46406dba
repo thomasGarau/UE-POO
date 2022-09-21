@@ -1,0 +1,68 @@
+package attelier7;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class Des {
+	
+	private String name;
+	private int nb_faces = 6;
+	private static int nbrDes = 0;
+	
+	public int getNb_faces() {
+		return nb_faces;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setNb_faces(int nb_faces) {
+		this.nb_faces = nb_faces;
+	}
+	
+	
+	
+	public Des(int nb_face, String name) {
+		if(nb_faces < 3){
+			this.nb_faces = 3;
+		}else if(nb_faces >120){
+			this.nb_faces = 120;
+		}else {
+			this.nb_faces = nb_face;
+		}
+		if(name != null && name != "" ) {
+			this.name = name;
+		}
+		nbrDes ++;
+	}
+	
+	public Des(int nb_face) {
+		if(nb_faces < 3){
+			this.nb_faces = 3;
+		}else if(nb_faces >120){
+			this.nb_faces = 120;
+		}else {
+			this.nb_faces = nb_face;
+		}
+		this.name = "De" + nbrDes;
+		nbrDes ++;
+	}
+	
+	public Des() {
+		nbrDes ++;
+		this.name = "De" + nbrDes;
+	}
+	
+	public int lancer() {
+		return ThreadLocalRandom.current().nextInt(1, this.nb_faces +1);
+	}
+	public int lancer(nb_lancer) {
+		max = 0;
+		for(i=0; i < nb_lancer; i++) {
+			a = ThreadLocalRandom.current().nextInt(1, this.nb_faces +1);
+			if(a > max){
+				max = 0;
+			}
+		}
+	}
+}

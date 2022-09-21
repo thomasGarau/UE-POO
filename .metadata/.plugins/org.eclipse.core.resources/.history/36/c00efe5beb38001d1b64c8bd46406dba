@@ -1,0 +1,10 @@
+package attelier7;
+
+public class main {
+
+	public static void main(String[] args) {
+		Des d = new Des();
+		System.out.print(d.getName() + d.getNb_faces());
+	}
+
+}

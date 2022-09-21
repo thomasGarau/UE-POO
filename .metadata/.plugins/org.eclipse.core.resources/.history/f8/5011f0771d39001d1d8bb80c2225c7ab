@@ -1,0 +1,6 @@
+
+public class Entier {
+	private borneMin;
+	private borneMax;
+	
+}

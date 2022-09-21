@@ -1,0 +1,21 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		Entier entier = new Entier(0, 10, 5);
+		Entier entierFou = new Entier(0,10,5);
+		for(int i =0; i < 20; i++) {
+			entier.incremente();
+			entierFou.incremente();
+		}
+		System.out.print("entier " + entier.getValeur() + " entierFou " + entierFou.getValeur() + "\n");
+		entier.setValeur(3);
+		entierFou.setValeur(2);
+		System.out.print("reset " + " entier " + entier.getValeur() + " entierFou " + entierFou.getValeur() + "\n");
+		entier.incremente(4);
+		entierFou.incremente(2);
+		System.out.print("test 2 " + "entier " + entier.getValeur() + " entierFou " + entierFou.getValeur() + "\n");
+		System.out.print("toString "  + entierFou.toString() + " equals " +  entierFou.equals(entier));
+	}	
+
+}

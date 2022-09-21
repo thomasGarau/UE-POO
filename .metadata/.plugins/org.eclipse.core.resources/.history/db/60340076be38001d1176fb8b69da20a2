@@ -1,0 +1,20 @@
+
+public class Vecteur {
+	private float x = 0;
+	private float y = 0;
+	private float z = 0;
+	
+	public Vecteur(float x, float y,float z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+	
+	public Vecteur() {
+
+	}
+	
+	public String afficheCor() {
+		print "< "
+	}
+}
