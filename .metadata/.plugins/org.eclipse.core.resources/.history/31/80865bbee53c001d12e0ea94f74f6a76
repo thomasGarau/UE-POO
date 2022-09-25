@@ -1,0 +1,12 @@
+package atelier7;
+
+import java.util.GregorianCalendar;
+
+public class Manager extends Employe {
+	private Secretaire secretaire;
+	
+	private Manager(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse, int salaire, GregorianCalendar dateEmbauche) {
+		super(leNom, lePrenom, laDate, lAdresse, salaire, dateEmbauche);
+		
+	}
+}

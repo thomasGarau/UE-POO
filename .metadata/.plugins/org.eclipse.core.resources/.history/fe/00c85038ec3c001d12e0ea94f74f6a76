@@ -1,0 +1,19 @@
+package atelier7;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class Manager extends Employe {
+	private Secretaire secretaire;
+	
+	private Manager(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse, int salaire, GregorianCalendar dateEmbauche, Secretaire secretaire) {
+		super(leNom, lePrenom, laDate, lAdresse, salaire, dateEmbauche);
+		this.secretaire = secretaire;
+	}
+	
+	private void augmenterLeSalaire(float augmentation) {
+		Calendar aujourdhui = Calendar.getInstance();
+		int anciennete =  aujourdhui.get(Calendar.YEAR) - this.dateEmbauche.get(Calendar.YEAR);
+		this.salaire = (int) Math.ceil(this.salaire * (1 + augmentation / 100 + 0.05 * anciennete));
+	}
+}

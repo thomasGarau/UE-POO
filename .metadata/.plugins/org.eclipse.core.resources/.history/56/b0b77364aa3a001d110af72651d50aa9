@@ -1,0 +1,37 @@
+package atelier7;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.util.*;
+import atelier7.Adresse;
+
+
+public class Employe extends Personne{
+	private int salaire;
+	private final GregorianCalendar dateEmbauche;
+	private final static int ageMinLegale = 16;
+	private final static int ageMaxLegale = 65;
+
+	
+	private Employe(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse, int salaire, GregorianCalendar dateEmbauche) {
+		super(leNom, lePrenom, laDate, lAdresse);
+		this.salaire = salaire;
+		this.dateEmbauche = dateEmbauche;
+	}
+	
+	public static Employe CreerEmploye(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse, int salaire, GregorianCalendar dateEmbauche) {
+		Calendar aujourdhui = Calendar.getInstance();
+		if(
+			aujourdhui.get(Calendar.YEAR) - laDate.get(Calendar.YEAR)  < ageMinLegale ||
+			aujourdhui.get(Calendar.YEAR) -laDate.get(Calendar.YEAR)  > ageMaxLegale
+		) {
+			System.out.print(aujourdhui.get(Calendar.YEAR) + laDate.get(Calendar.YEAR), "aaa,kze");
+			return new Employe(leNom, lePrenom, laDate, lAdresse, salaire, dateEmbauche);
+		}else {
+			return null;
+		}
+	}
+	
+
+	
+}

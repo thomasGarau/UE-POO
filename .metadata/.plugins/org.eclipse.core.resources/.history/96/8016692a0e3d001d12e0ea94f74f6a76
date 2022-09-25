@@ -1,0 +1,102 @@
+package atelier7;
+
+import java.time.*;
+import java.util.*;
+import java.time.temporal.ChronoUnit;
+
+public class test {
+
+	public static void main(String[] args) {
+		System.out.print("------------------------TEST PERSONNE------------------------------------------" + " \n");
+
+		System.out.print(Personne.getNbPersonne()+ "\n");
+		Personne thomas = new Personne(
+				"garau", "thomas", 1, 6, 2001, 0, "av jean nicoli","20250","corte"
+				);
+		Personne personne2 = new Personne("a", "b", 1,7,2001, 1, "aaa","aaaa","aaa");
+		Personne personne3 = new Personne("a", "b", 1,7,2001, 1, "aaa","aaaa","aaa");
+		System.out.print(thomas.toString() + "\n");
+		System.out.print(Personne.getNbPersonne() + "\n");
+		System.out.print(Personne.plusAgee(thomas, personne2) + "plusAgee"+ "doit etre false" + "\n");
+		System.out.print(Personne.plusAgee(personne2, thomas) + "doit etre True" + "\n");
+		System.out.print(thomas.plusAgee(personne2)+ "plusAgee instance" + "doit etre false" + "\n");
+		System.out.print(personne2.plusAgee(thomas)+ "doit etre True" + "\n");
+		System.out.print(thomas.equals(personne2)+ "equals" + "doit etre false" + "\n");
+		System.out.print(personne3.toString() + " \n" + personne2.toString() + "\n");
+		System.out.print(personne3.equals(personne2)+ " doit etre true " + "\n");
+		System.out.print("------------------------TEST EMPLOYE------------------------------------------" + " \n");
+		
+		GregorianCalendar date = new GregorianCalendar(2002,03,11);
+		GregorianCalendar date2 = new GregorianCalendar(2020,06,01);
+		GregorianCalendar date3 = new GregorianCalendar(2020,8,04);
+		GregorianCalendar date4 = new GregorianCalendar(2020,8,28);
+		GregorianCalendar dateTropJeune = new GregorianCalendar(2010,06,01);
+		GregorianCalendar dateTropVieux = new GregorianCalendar(1940,06,01);
+		Adresse adresse = new Adresse(20, "avenue president pierucci", "20250", "corte");
+		System.out.print(Employe.CreerEmploye("antho", "colin", date , adresse, 3000, date2) + "doit exister" + "\n");
+		System.out.print(Employe.CreerEmploye("antho", "lejeune", dateTropJeune , adresse, 3000, date2) + "doit etre null" + "\n");
+		System.out.print(Employe.CreerEmploye("antho", "levieux", dateTropVieux , adresse, 3000, date2) + "doit etre null" +"\n");
+		Employe anuite = Employe.CreerEmploye("antho", "colin", date , adresse, 3000, date2);
+		Employe anuite2 = Employe.CreerEmploye("antho", "colin", date , adresse, 3000, date3);
+		Employe anuite3 = Employe.CreerEmploye("antho", "colin", date , adresse, 3000, date4);
+		System.out.print(anuite.calculAnnuite() + "doit return 3" + '\n');
+		System.out.print(anuite2.calculAnnuite() + "doit return 3" + '\n');
+		System.out.print(anuite3.calculAnnuite() + "doit return 2" + '\n');
+		
+		System.out.print("------------------------TEST MANAGER------------------------------------------" + " \n");
+		
+		Manager manager1 = new Manager("antho", "colin", date , adresse, 3000, date2);
+		System.out.print(manager1.toString() + " doit afficher manager sans secretaire");
+		ArrayList<Manager> listManager = new ArrayList<>();
+		Secretaire secretaireTest = new Secretaire("secretaireTEst", "colin", date , adresse, 3000, date2, listManager);
+		System.out.print(secretaireTest.toString() + "popo");
+		manager1.changeSecretaire(secretaireTest);
+		System.out.print(manager1.toString() + " aaa doit afficher manager avec une secretaire");
+		Manager manager2 = new Manager("antho", "colin", date , adresse, 3000, date2, secretaireTest);
+		System.out.print(manager2.toString() + " doit afficher manager avec une secretaire");
+		Secretaire secretaireTest2 = new Secretaire("secretaire2", "aaa", date , adresse, 3000, date2, listManager);
+		manager2.changeSecretaire(secretaireTest2);
+		System.out.print(manager2.toString() + " doit afficher manager avec secretaire2" + "\n");
+		manager2.augmenterLeSalaire(10);
+		System.out.print(manager2.salaire + " doit afficher salaire de 3330" + "\n");
+
+		System.out.print("------------------------TEST SECRETAIRE------------------------------------------" + " \n");
+		
+		ArrayList<Manager> listManager2 = new ArrayList<>();
+		Secretaire secretaire0 = new Secretaire("Secretaire", "colin", date , adresse, 3000, date2, listManager2);
+		System.out.print(secretaire0.toString() + "doit pas marcher" + "\n");
+		listManager2.add(manager1);
+		Secretaire secretaire1 = new Secretaire("SEcretaire1", "colin", date , adresse, 3000, date2, listManager2);
+		System.out.print(secretaire0.toString() + "doit afficher secretaire avec un manager" + "\n");
+		listManager2.add(manager1);
+		listManager2.add(manager1);
+		listManager2.add(manager1);
+		listManager2.add(manager1);
+		secretaire1.setListeManager(listManager2);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 5" + "\n");
+		listManager2.add(manager1);
+		secretaire1.setListeManager(listManager2);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 5" + "\n");
+		ArrayList<Manager> listManager3 = new ArrayList<>();
+		secretaire1.setListeManager(listManager3);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 5" + "\n");
+		listManager3.add(manager1);
+		secretaire1.setListeManager(listManager3);
+		secretaire1.ajouteManager(manager1);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 2" + "\n");
+		secretaire1.supprimeManager(manager1);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 1" + "\n");
+		secretaire1.supprimeManager(manager1);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 1" + "\n");
+		secretaire1.ajouteManager(manager1);
+		secretaire1.ajouteManager(manager1);
+		secretaire1.ajouteManager(manager1);
+		secretaire1.ajouteManager(manager1);
+		secretaire1.ajouteManager(manager1);
+		secretaire1.ajouteManager(manager1);
+		System.out.print(secretaire1.getListeManager().size() + "doit return 5" + "\n");
+		secretaire1.augmenterLeSalaire(5);
+		System.out.print(secretaire1.salaire + "doit return 3300");
+	}
+
+}

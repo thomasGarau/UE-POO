@@ -1,0 +1,67 @@
+package atelier7;
+
+import java.util.*;
+
+public class Secretaire extends Employe{
+	private ArrayList<Manager> listeManager = new ArrayList<>(5);
+	private static final int nbManagerMin = 1;
+	private static final int nbManagerMax = 5;
+	
+	public ArrayList<Manager> getListeManager() {
+		return listeManager;
+	}
+	
+	private static boolean essayeListeManager(ArrayList<Manager> listeManager) {
+		return (listeManager.size() >= nbManagerMin && listeManager.size() <= nbManagerMax);
+	}
+	
+	public void setListeManager(ArrayList<Manager> listeManager) {
+		if(essayeListeManager(listeManager)) {
+			this.listeManager = listeManager;
+		}
+	}
+
+	public Secretaire(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse, int salaire, GregorianCalendar dateEmbauche, ArrayList<Manager> listeManager) {
+		super(leNom, lePrenom, laDate, lAdresse, salaire, dateEmbauche);
+		this.setListeManager(listeManager);
+	}
+	
+	//appel le constructeur si la listeManager est conforme si non retourne null
+	public static Secretaire creerSecretaire(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse, int salaire, GregorianCalendar dateEmbauche, ArrayList<Manager> listeManager) {
+		if(essayeListeManager(listeManager)){
+			return new Secretaire(leNom,lePrenom,laDate,lAdresse,salaire,dateEmbauche,listeManager);
+		}else {
+			return null;
+		}
+	}
+	//parm augmentation => pourcentage de l'augmentation 
+	//on ajoute a l'augmentation 0.1 % pour chaque manager associe à la secretaire
+	public void augmenterLeSalaire(double augmentation) {
+		this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100 + 0.01 * listeManager.size()));
+	}
+	
+	public void ajouteManager(Manager manager) {
+		if(listeManager.size() < nbManagerMax) {
+			this.listeManager.add(manager);
+		}
+	}
+	
+	public void supprimeManager(Manager manager) {
+		if(listeManager.size() > nbManagerMin) {
+			this.listeManager.remove(manager);
+		}
+	}
+	
+	public String toString(){
+		return "\nNom : "+nom+"\n"
+		+"Prenom : "+prenom+"\n"+
+		"Ne(e) le : "+dateNaissance.get(Calendar.DAY_OF_MONTH)+
+		"-"+dateNaissance.get(Calendar.MONTH)+
+		"-"+dateNaissance.get(Calendar.YEAR)+"\n"+
+		"Adresse : "+
+		adresse.toString() + "\n"+
+		salaire +  "\n" +
+		listeManager.size();
+	}
+
+}
