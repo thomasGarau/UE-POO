@@ -36,9 +36,7 @@ public class Employe extends Personne{
 	
 	//parm augmentation => pourcentage de l'augmentation 
 	public void augmenterLeSalaire(double augmentation) {
-		if(augmentation >0) {
-			this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100)) ;
-		}
+		this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100)) ;
 	}
 	
 	// retourne le nombre d'annuite d'une instance (toute annee commencer est cotmper)

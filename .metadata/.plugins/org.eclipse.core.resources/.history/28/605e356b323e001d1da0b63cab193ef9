@@ -9,7 +9,7 @@ public class Des {
 	protected static int nbrDes = 0;
 	protected static final int nb_face_max = 120;
 	protected static final int nb_face_min = 3;
-			
+	
 	public int getNb_faces() {
 		return nb_face;
 	}

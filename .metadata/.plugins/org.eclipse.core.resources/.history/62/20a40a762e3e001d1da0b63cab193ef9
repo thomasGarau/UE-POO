@@ -41,9 +41,7 @@ public class Secretaire extends Employe{
 	//parm augmentation => pourcentage de l'augmentation 
 	//on ajoute a l'augmentation 0.1 % pour chaque manager associe à la secretaire
 	public void augmenterLeSalaire(double augmentation) {
-		if(augmentation > 0) {
-			this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100 + 0.01 * listeManager.size()));
-		}
+		this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100 + 0.01 * listeManager.size()));
 	}
 	
 	//ajoute le manager passer en param 
