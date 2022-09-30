@@ -6,7 +6,6 @@ public class EntierBarjo extends Entier{
 	
 	public EntierBarjo(int borneMin, int borneMax, int valeur, int niveauFolie) {
 		super(borneMin, borneMax, valeur);
-		this.setValeur(valeur);
 		this.niveauFolie = niveauFolie;
 	}
 	

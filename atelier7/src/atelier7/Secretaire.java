@@ -4,16 +4,13 @@ import java.util.*;
 
 public class Secretaire extends Employe{
 	private ArrayList<Manager> listeManager = new ArrayList<>(5);
-	private static final int nbManagerMin = 1;
-	private static final int nbManagerMax = 5;
+	private static final int NB_MANAGER_MIN = 1;
+	private static final int NB_MANAGER_MAX = 5;
 	
-	public ArrayList<Manager> getListeManager() {
-		return listeManager;
-	}
-	
+		
 	//verifie que la liste passé en param est inferieur ou egale au nombre Max de manager et supérieur ou egale au nombre min 
 	private static boolean essayeListeManager(ArrayList<Manager> listeManager) {
-		return (listeManager.size() >= nbManagerMin && listeManager.size() <= nbManagerMax);
+		return (listeManager.size() >= NB_MANAGER_MIN && listeManager.size() <= NB_MANAGER_MAX);
 	}
 	
 	//modifie la listeManager par une liste passer en param si celle-ci est conforme
@@ -38,38 +35,33 @@ public class Secretaire extends Employe{
 			return null;
 		}
 	}
+	
+	public ArrayList<Manager> getListeManager() {
+		return listeManager;
+	}
+	
 	//parm augmentation => pourcentage de l'augmentation 
 	//on ajoute a l'augmentation 0.1 % pour chaque manager associe à la secretaire
 	public void augmenterLeSalaire(double augmentation) {
-		if(augmentation > 0) {
-			this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100 + 0.01 * listeManager.size()));
-		}
+		super.augmenterLeSalaire(augmentation + 0.01 * listeManager.size());
 	}
 	
 	//ajoute le manager passer en param 
 	public void ajouteManager(Manager manager) {
-		if(listeManager.size() < nbManagerMax) {
+		if(listeManager.size() < NB_MANAGER_MAX) {
 			this.listeManager.add(manager);
 		}
 	}
 	
 	//supprime le manager passer en param
 	public void supprimeManager(Manager manager) {
-		if(listeManager.size() > nbManagerMin) {
+		if(listeManager.size() > NB_MANAGER_MIN) {
 			this.listeManager.remove(manager);
 		}
 	}
 	
 	public String toString(){
-		return "\nNom : "+nom+"\n"
-		+"Prenom : "+prenom+"\n"+
-		"Ne(e) le : "+dateNaissance.get(Calendar.DAY_OF_MONTH)+
-		"-"+dateNaissance.get(Calendar.MONTH)+
-		"-"+dateNaissance.get(Calendar.YEAR)+"\n"+
-		"Adresse : "+
-		adresse.toString() + "\n"+
-		salaire +  "\n" +
-		listeManager.size();
+		return super.toString() + "\n" +  listeManager.size();
 	}
 
 }

@@ -18,11 +18,7 @@ public class Manager extends Employe {
 	//parm augmentation => pourcentage de l'augmentation 
 	//ajoute une augmentation de 0.5% par annees d'anciennetes 
 	public void augmenterLeSalaire(double augmentation) {
-		if(augmentation > 0) {
-			Calendar aujourdhui = Calendar.getInstance();
-			int anciennete =  aujourdhui.get(Calendar.YEAR) - this.dateEmbauche.get(Calendar.YEAR);
-			this.salaire = (int) Math.round(this.salaire * (1 + augmentation / 100 + 0.005 * anciennete));
-		}
+		super.augmenterLeSalaire(augmentation + 0.5 * this.calculAnnuite() );
 	}
 	
 	//remplace la secretaire associé au Manager par une nouvelle passe en param 
@@ -31,14 +27,6 @@ public class Manager extends Employe {
 	}
 	
 	public String toString(){
-		return "\nNom : "+nom+"\n"
-		+"Prenom : "+prenom+"\n"+
-		"Ne(e) le : "+dateNaissance.get(Calendar.DAY_OF_MONTH)+
-		"-"+dateNaissance.get(Calendar.MONTH)+
-		"-"+dateNaissance.get(Calendar.YEAR)+"\n"+
-		"Adresse : "+
-		adresse.toString() + "\n"+
-		salaire +  "\n" +
-		secretaire;
+		return super.toString() + "\n" + this.secretaire;
 	}
 }

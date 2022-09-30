@@ -5,17 +5,13 @@ import atelier7.Adresse;
 
 
 	public class Personne{
-		protected static final Adresse ADRESSE_INCONNUE = null;
-		protected String nom;
-		protected String prenom;
-		protected final GregorianCalendar dateNaissance;
-		protected Adresse adresse=ADRESSE_INCONNUE;
+		private static final Adresse ADRESSE_INCONNUE = null;
+		private String nom;
+		private String prenom;
+		private final GregorianCalendar DATE_NAISSANCE;
+		private Adresse adresse=ADRESSE_INCONNUE;
 	    private static int nbPersonne;
-		
-		public static int getNbPersonne() {
-			return nbPersonne;
-		}
-
+				
 		/**
 		 * Constructeur de Personne
 		 * @param leNom le nom de la personne
@@ -26,7 +22,7 @@ import atelier7.Adresse;
 		public Personne(String leNom,String lePrenom, GregorianCalendar laDate, Adresse lAdresse){
 			nom = leNom.toUpperCase();
 			prenom=lePrenom;
-			dateNaissance=laDate;
+			DATE_NAISSANCE=laDate;
 			adresse=lAdresse;
 			nbPersonne++;
 		}
@@ -65,8 +61,8 @@ import atelier7.Adresse;
 		 * Accesseur
 		 * @return retourne la date de naissance	 
 		 */
-		public GregorianCalendar getDateNaissance() {
-			return dateNaissance;
+		public GregorianCalendar getDATE_NAISSANCE() {
+			return DATE_NAISSANCE;
 		}
 		/**
 		 * Accesseur
@@ -86,12 +82,17 @@ import atelier7.Adresse;
 		/* (non-Javadoc)
 		 * @see java.lang.Object#toString()
 		 */
+		
+		public static int getNbPersonne() {
+			return nbPersonne;
+		}
+
 		public String toString(){
 			String result="\nNom : "+nom+"\n"
 			+"Prenom : "+prenom+"\n"+
-			"Ne(e) le : "+dateNaissance.get(Calendar.DAY_OF_MONTH)+
-			"-"+dateNaissance.get(Calendar.MONTH)+
-			"-"+dateNaissance.get(Calendar.YEAR)+"\n"+
+			"Ne(e) le : "+DATE_NAISSANCE.get(Calendar.DAY_OF_MONTH)+
+			"-"+DATE_NAISSANCE.get(Calendar.MONTH)+
+			"-"+DATE_NAISSANCE.get(Calendar.YEAR)+"\n"+
 			"Adresse : "+
 			adresse.toString();
 			return result;
@@ -99,21 +100,25 @@ import atelier7.Adresse;
 		
 		// prend en param deux Personne et retourne vrai si la première passer en param est plus age que la seconde
 		public static boolean plusAgee(Personne personne1, Personne personne2) {
-			return (personne1.getDateNaissance().getTimeInMillis() - personne2.getDateNaissance().getTimeInMillis() > 0);
+			return (personne1.getDATE_NAISSANCE().getTimeInMillis() - personne2.getDATE_NAISSANCE().getTimeInMillis() > 0);
 		}
 		// prend en param une personne et retourne vrai si l'instance qui appelle la méthode est plus agée que celle-ci
 		public boolean plusAgee(Personne personne2) {
-			return (this.getDateNaissance().getTimeInMillis() - personne2.getDateNaissance().getTimeInMillis() > 0);
+			return (this.getDATE_NAISSANCE().getTimeInMillis() - personne2.getDATE_NAISSANCE().getTimeInMillis() > 0);
 		}
 		
 		// prend en param une personne est retourne vrai si elle est identique à celle appelant la méthode
-		public boolean equals(Personne personne2) {
-			return (
-				this.getNom().equals(personne2.getNom()) &&
-				this.getPrenom().equals(personne2.getPrenom())&&
-				!this.getDateNaissance().after(personne2.getDateNaissance())
-			);
-				
+		public boolean equals(Object personne2) {
+			if(personne2 instanceof Personne) {
+				Personne personne3 = (Personne) personne2;
+				return (
+					this.getNom().equals(personne3.getNom()) &&
+					this.getPrenom().equals(personne3.getPrenom())&&
+					!this.getDATE_NAISSANCE().after(personne3.getDATE_NAISSANCE())
+				);
+			}else {
+				return false;
+			}
 		}
 	}
 

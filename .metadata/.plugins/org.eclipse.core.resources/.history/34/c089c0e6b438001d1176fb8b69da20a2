@@ -1,8 +1,0 @@
-
-public class ManipRob {
-	
-	 public static void main (String[] args){
-		 Robot robot1 = new Robot("toto", 10, 20, 3);
-		 Robot robot1 = new Robot("titi");
-	 }
-}

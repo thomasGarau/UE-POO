@@ -27,7 +27,7 @@ public class test {
 		System.out.print("------------------------TEST EMPLOYE------------------------------------------" + " \n");
 		
 		GregorianCalendar date = new GregorianCalendar(2002,03,11);
-		GregorianCalendar date2 = new GregorianCalendar(2020,06,01);
+		GregorianCalendar date2 = new GregorianCalendar(2001,06,01);
 		GregorianCalendar date3 = new GregorianCalendar(2020,8,04);
 		GregorianCalendar date4 = new GregorianCalendar(2020,8,28);
 		GregorianCalendar dateTropJeune = new GregorianCalendar(2010,06,01);
@@ -45,7 +45,7 @@ public class test {
 		
 		System.out.print("------------------------TEST MANAGER------------------------------------------" + " \n");
 		
-		Manager manager1 = new Manager("antho", "colin", date , adresse, 3000, date2);
+		Manager manager1 = new Manager("antho", "colin", date , adresse, 1200, date2);
 		System.out.print(manager1.toString() + " doit afficher manager sans secretaire");
 		ArrayList<Manager> listManager = new ArrayList<>();
 		listManager.add(manager1);
@@ -53,13 +53,13 @@ public class test {
 		System.out.print(secretaireTest.toString());
 		manager1.changeSecretaire(secretaireTest);
 		System.out.print(manager1.toString() + " aaa doit afficher manager avec une secretaire");
-		Manager manager2 = new Manager("antho", "colin", date , adresse, 3000, date2, secretaireTest);
+		Manager manager2 = new Manager("antho", "colin", date , adresse, 1200, date2, secretaireTest);
 		System.out.print(manager2.toString() + " doit afficher manager avec une secretaire");
 		Secretaire secretaireTest2 = Secretaire.creerSecretaire("secretaire2", "aaa", date , adresse, 3000, date2, listManager);
 		manager2.changeSecretaire(secretaireTest2);
 		System.out.print(manager2.toString() + " doit afficher manager avec secretaire2" + "\n");
 		manager2.augmenterLeSalaire(10);
-		System.out.print(manager2.salaire + " doit afficher salaire de 3330" + "\n");
+		System.out.print(manager2.getSalaire() + " doit afficher salaire de 1458" + "\n");
 
 		System.out.print("------------------------TEST SECRETAIRE------------------------------------------" + " \n");
 		
@@ -108,7 +108,7 @@ public class test {
 		secretaire1.ajouteManager(manager1);
 		System.out.print(secretaire1.getListeManager().size() + "doit return 5" + "\n");
 		secretaire1.augmenterLeSalaire(5);
-		System.out.print(secretaire1.salaire + "doit return 3300" + "\n");
+		System.out.print(secretaire1.getSalaire() + "doit return 3300" + "\n");
 		secretaire1.supprimeManager(manager1);
 		System.out.print(secretaire1.getListeManager().size() + " doit return 4" + "\n");
 

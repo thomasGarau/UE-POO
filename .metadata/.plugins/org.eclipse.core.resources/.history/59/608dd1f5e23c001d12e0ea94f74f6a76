@@ -1,5 +1,0 @@
-package atelier7;
-
-public class Manager extends Personne {
-
-}
