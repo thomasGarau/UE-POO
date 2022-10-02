@@ -4,11 +4,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Des {
 	
-	protected String name;
-	protected int nb_face = 6;
-	protected static int nbrDes = 0;
-	protected static final int nb_face_max = 120;
-	protected static final int nb_face_min = 3;
+	private String name;
+	public int getNb_face() {
+		return nb_face;
+	}
+
+	private int nb_face = 6;
+	private static int nbrDes = 0;
+	private static final int NB_FACE_MAX = 120;
+	private static final int NB_FACE_MIN = 3;
 			
 	public int getNb_faces() {
 		return nb_face;
@@ -18,11 +22,11 @@ public class Des {
 		return name;
 	}
 	
-	public void setNb_face(int nb_face, int nb_face_max, int nb_face_min) {
-		if(nb_face < nb_face_min){
-			this.nb_face = nb_face_min;
-		}else if(nb_face >nb_face_max){
-			this.nb_face = nb_face_max;
+	public void setNb_face(int nb_face) {
+		if(nb_face < NB_FACE_MIN){
+			this.nb_face = NB_FACE_MIN;
+		}else if(nb_face >NB_FACE_MAX){
+			this.nb_face = NB_FACE_MAX;
 		}else {
 			this.nb_face = nb_face;
 		}
@@ -30,7 +34,7 @@ public class Des {
 	
 	public Des(int nb_face, String name) {
 		nbrDes ++;
-		this.setNb_face(nb_face, nb_face_max, nb_face_min);
+		this.setNb_face(nb_face);
 		if(name != null && name != "" ) {
 			this.name = name;
 		}else {
@@ -39,21 +43,23 @@ public class Des {
 	}
 	
 	public Des(int nb_face) {
-		this(nb_face, ("Des" + nbrDes));
+		this(nb_face, null);
 	
 	}
 	
 	public Des() {
-		this(6, ("Des" + nbrDes));
+		this(6, null);
 	}
 	
 	public int lancer(int nb_lancer) {
 		int max = 0;
-		for(int i=0; i < nb_lancer; i++) {
-			int a = ThreadLocalRandom.current().nextInt(1, this.nb_face +1);
-			if(a > max){
-				max = 0;
+		int i = 0;
+		while( i < nb_lancer && max < this.getNb_face()) {
+			int lancer = this.lancer();
+			if(lancer > max){
+				max = lancer;
 			}
+			i++;
 		}
 	return max;
 	}
@@ -66,7 +72,7 @@ public class Des {
 		boolean retour = false;
 		if(de != null && de instanceof Des) {
 			Des de2 =(Des)de;
-			retour = (this.name == de2.name && this.nb_face == de2.nb_face);
+			retour = (this.name.equals(de2.name) && this.nb_face == de2.nb_face);
 		}
 		return retour;
 	}

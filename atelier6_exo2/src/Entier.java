@@ -1,8 +1,20 @@
 
 public class Entier {
-	protected int borneMin;
-	protected int borneMax;
-	protected int valeur; 
+	private int borneMin;
+	private int borneMax;
+	private int valeur; 
+	
+		public Entier(int borneMin, int borneMax, int valeur) {
+			if(borneMin <= borneMax) {
+				this.borneMin = borneMin;
+				this.borneMax = borneMax;
+			}
+			this.setValeur(valeur);
+		}
+
+		public Entier(int borneMin, int borneMax) {
+			this(borneMin, borneMax, borneMin);
+		}
 	
 	public int getValeur() {
 		return valeur;
@@ -17,22 +29,6 @@ public class Entier {
 	}
 	public int getBorneMax() {
 		return borneMax;
-	}
-	
-	
-	public Entier(int borneMin, int borneMax) {
-		if(borneMin <= borneMax) {
-			this.borneMin = borneMin;
-			this.borneMax = borneMax;
-		}
-	}
-	
-	public Entier(int borneMin, int borneMax, int valeur) {
-		if(borneMin <= borneMax) {
-			this.borneMin = borneMin;
-			this.borneMax = borneMax;
-		}
-		this.setValeur(valeur);
 	}
 	
 	public void incremente() {
@@ -50,11 +46,17 @@ public class Entier {
 		this.borneMin + " borneMax " + this.borneMax;
 	}
 	
-	public boolean equals(Entier entier) {
-		return(
-				this.valeur == entier.valeur &&
-				this.borneMax == entier.borneMax &&
-				this.borneMin == entier.borneMin
-		);
+	public boolean equals(Object entier) {
+		if(entier instanceof Entier && entier != null) {
+			Entier entier2 = (Entier) entier;
+			return(
+					this.valeur == entier2.valeur &&
+					this.borneMax == entier2.borneMax &&
+					this.borneMin == entier2.borneMin
+			);
+		}else {
+			System.err.print("n'est pas un Entier");
+			return false;
+		}
 	}
 }

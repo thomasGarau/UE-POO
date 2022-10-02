@@ -11,17 +11,12 @@ public class EntierBarjo extends Entier{
 	
 	
 	public void incremente() {
-		int a = ThreadLocalRandom.current().nextInt(0, this.niveauFolie);
-		if(this.valeur + a < this.borneMax) {
-			this.valeur += a+1;
-		}
+		super.incremente();
 	}
 	
 	public void incremente(int valeurIncrementation) {
 		int a = ThreadLocalRandom.current().nextInt(0, this.niveauFolie);
-		if(this.valeur + valeurIncrementation + a <= this.borneMax) {
-			this.valeur += valeurIncrementation + a;
-		}
+		super.incremente(a);
 	}
 	
 }
